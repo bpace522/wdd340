@@ -147,6 +147,119 @@ footer {
   text-align: center;
 }
 
+/******* Vehicle Detail Page *******/
+
+.vehicle-detail-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+}
+
+.vehicle-images {
+  display: flex;
+  justify-content: center;
+}
+
+.main-vehicle-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.vehicle-info h1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2b6f2b;
+  margin-bottom: 1rem;
+}
+
+.vehicle-specs {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.vehicle-specs li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.description {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.vehicle-actions button {
+  background-color: rgb(27, 202, 202);
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.vehicle-actions button.secondary {
+  background-color: #ddd;
+}
+
+/* =======================
+   Error Page Styles
+   ======================= */
+.error-title {
+  font-size: 2.5rem;
+  color: #dc3545; /* matches red error */
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  background-color: #fff3f3;
+  border: 2px solid #f5c6cb;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.error-heading {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.error-details {
+  font-size: 1rem;
+  color: #721c24;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.btn-home {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(27, 202, 202);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-home:hover {
+  background-color: rgb(20, 160, 160);
+}
+
+
+
 @media screen and (max-width: 500px) {
   .upg-img-card {
     width: 100%;
@@ -203,4 +316,116 @@ footer {
   #upgrades-grid {
     grid-template-columns: repeat(2, minmax(12rem, 1fr));
   }
+  
+  .vehicle-detail-page {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 4rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
+
+.vehicle-images {
+  flex: 1.2;
+}
+
+.vehicle-info {
+  flex: 1;
+}
+
+}
+
+/* Classification/Inventory Display */
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+#inv-display li {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 4px solid rgb(27,202,202);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#inv-display li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(27, 202, 202, 0.3);
+}
+
+#inv-display li > a {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+#inv-display li img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#inv-display .namePrice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#inv-display .namePrice hr {
+  border: none;
+  border-top: 2px solid rgb(27,202,202);
+  margin: 0.5rem 0;
+}
+
+#inv-display .namePrice h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+#inv-display .namePrice h2 a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+#inv-display .namePrice h2 a:hover {
+  color: rgb(27,202,202);
+}
+
+#inv-display .namePrice span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(27, 202, 202);
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 1200px) {
+  #inv-display {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin: 2rem 5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #inv-display {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #inv-display {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+

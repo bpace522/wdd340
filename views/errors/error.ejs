@@ -1,18 +1,11 @@
-// Content Heading //
-// Finds if title exists then displays with h1 or redirects to index
-// messages() commented out incase we use them in the future
 <% if (title) { %>
-<h1><%= title %></h1>
-<% } else {
-    res.redirect('/')
-} %>
+  <h1 class="error-title"><%= title %></h1>
+<% } %>
 
-// Error Message goes here 
 <hr>
 
 <section class="error-message">
-    <p><strong>Error Details:</strong></p>
-    <div>
-        <%- message %>
-    </div>
+  <p class="error-heading">Oops! Something went wrong.</p>
+  <div class="error-details"><%- message %></div>
+  <a href="/" class="btn-home">Return Home</a>
 </section>

@@ -13,6 +13,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
+const testRoute = require("./routes/testRoute")
 
 /* ***********************
  * View Engine and Templates
@@ -31,6 +32,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 //Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Test route
+app.use("/test", testRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
@@ -51,6 +55,13 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
+
+// controllers/testController.js
+exports.triggerError = (req, res, next) => {
+  const error = new Error("500 intentional error");
+  error.status = 500;
+  next(error);
+}
 
 /* ***********************
  * Local Server Information
