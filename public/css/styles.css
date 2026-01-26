@@ -51,10 +51,21 @@ nav ul {
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 nav ul li {
   color: white;
   font-size: 1.2rem;
   text-align: center;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+nav ul li a:hover {
+  opacity: 0.7;
 }
 #hero-image {
   background-image: url("/images/vehicles/delorean.jpg");
@@ -427,5 +438,291 @@ footer {
   }
 }
 
+/* Login Page Styles */
+.login-container {
+  min-height: calc(100vh - 200px); /* Adjust based on your header/footer height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
 
+.login-form {
+  background-color: white;
+  border: 4px solid rgb(27, 202, 202);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 
+.login-form h1 {
+  text-align: center;
+  color: rgb(27, 202, 202);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.login-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+  outline: none;
+  border-color: rgb(27, 202, 202);
+}
+
+.login-form input[type="submit"] {
+  width: 100%;
+  background-color: rgb(27, 202, 202);
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+
+.login-form input[type="submit"]:hover {
+  background-color: rgb(20, 160, 160);
+}
+
+.login-form input[required] {
+  border-left: 4px solid rgb(27, 202, 202);
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.register-link a {
+  color: rgb(27, 202, 202);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.register-link a:hover {
+  color: rgb(20, 160, 160);
+  text-decoration: underline;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 500px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-form {
+    padding: 1.5rem;
+  }
+  
+  .login-form h1 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Wide screen adjustments */
+@media screen and (min-width: 1200px) {
+  .login-container {
+    min-height: calc(100vh - 300px);
+  }
+  
+  .login-form {
+    max-width: 500px;
+    padding: 3rem;
+  }
+  
+  .login-form h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Registration Page Styles */
+.register-container {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.register-form {
+  background-color: white;
+  border: 4px solid rgb(27, 202, 202);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.register-form h1 {
+  text-align: center;
+  color: rgb(27, 202, 202);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.register-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.register-form legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(27, 202, 202);
+  margin-bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.register-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.register-form label span {
+  color: rgb(27, 202, 202);
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.register-form input[type="text"]:focus,
+.register-form input[type="email"]:focus,
+.register-form input[type="password"]:focus {
+  outline: none;
+  border-color: rgb(27, 202, 202);
+}
+
+.register-form input[required] {
+  border-left: 4px solid rgb(27, 202, 202);
+}
+
+.register-form #password-rules {
+  background-color: #f0f9f9;
+  border: 2px solid rgb(27, 202, 202);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.register-form button {
+  width: 100%;
+  background-color: rgb(27, 202, 202);
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.register-form button:hover {
+  background-color: rgb(20, 160, 160);
+}
+
+.register-form button#togglePassword {
+  background-color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+.register-form button#togglePassword:hover {
+  background-color: #5a6268;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.login-link a {
+  color: rgb(27, 202, 202);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.login-link a:hover {
+  color: rgb(20, 160, 160);
+  text-decoration: underline;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 500px) {
+  .register-container {
+    padding: 1rem;
+  }
+  
+  .register-form {
+    padding: 1.5rem;
+  }
+  
+  .register-form h1 {
+    font-size: 1.75rem;
+  }
+  
+  .register-form legend {
+    font-size: 1.3rem;
+  }
+}
+
+/* Wide screen adjustments */
+@media screen and (min-width: 1200px) {
+  .register-container {
+    min-height: calc(100vh - 300px);
+  }
+  
+  .register-form {
+    max-width: 550px;
+    padding: 3rem;
+  }
+  
+  .register-form h1 {
+    font-size: 2.5rem;
+  }
+  
+  .register-form legend {
+    font-size: 1.75rem;
+  }
+}
