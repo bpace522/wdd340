@@ -949,3 +949,156 @@ footer {
     font-size: 2.5rem;
   }
 }
+
+/* ===========================
+   Inventory Table Styles
+   =========================== */
+
+.management-container h2 {
+  color: rgb(27, 202, 202);
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.management-container > p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.management-container select {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem;
+  margin-bottom: 2rem;
+  border: 2px solid rgb(27, 202, 202);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.management-container select:focus {
+  outline: none;
+  border-color: rgb(20, 160, 160);
+  box-shadow: 0 0 0 3px rgba(27, 202, 202, 0.1);
+}
+
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border: 3px solid rgb(27, 202, 202);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#inventoryDisplay thead {
+  background-color: rgb(27, 202, 202);
+  color: white;
+}
+
+#inventoryDisplay thead tr th,
+#inventoryDisplay thead tr td {
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+#inventoryDisplay tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+#inventoryDisplay tbody tr:hover {
+  background-color: #f0f9f9;
+}
+
+#inventoryDisplay tbody tr:last-child {
+  border-bottom: none;
+}
+
+#inventoryDisplay tbody td {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+#inventoryDisplay tbody td:first-child {
+  font-weight: bold;
+  color: #333;
+}
+
+#inventoryDisplay tbody td a {
+  color: rgb(27, 202, 202);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+#inventoryDisplay tbody td a:hover {
+  background-color: rgb(27, 202, 202);
+  color: white;
+}
+
+noscript {
+  display: block;
+  background-color: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #856404;
+  font-weight: bold;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .management-container select {
+    max-width: 100%;
+  }
+  
+  #inventoryDisplay {
+    font-size: 0.9rem;
+  }
+  
+  #inventoryDisplay thead tr th,
+  #inventoryDisplay thead tr td,
+  #inventoryDisplay tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  #inventoryDisplay tbody td a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Wide screen adjustments */
+@media screen and (min-width: 1200px) {
+  .management-container h2 {
+    font-size: 2rem;
+  }
+  
+  .management-container > p {
+    font-size: 1.2rem;
+  }
+  
+  #inventoryDisplay thead tr th,
+  #inventoryDisplay thead tr td {
+    font-size: 1.2rem;
+    padding: 1.25rem;
+  }
+  
+  #inventoryDisplay tbody td {
+    font-size: 1.1rem;
+    padding: 1.25rem;
+  }
+}

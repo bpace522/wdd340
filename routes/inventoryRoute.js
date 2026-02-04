@@ -8,6 +8,8 @@ const utilities = require("../utilities")
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId))
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByModelId))
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
 
 // Management view
 router.get("/", utilities.handleErrors(invController.buildManagement))
@@ -28,6 +30,13 @@ router.post(
   validate.inventoryRules(),
   validate.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
+)
+
+router.post(
+  "/update",
+  validate.inventoryRules(),
+  validate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
 )
 
 module.exports = router
