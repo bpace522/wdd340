@@ -1102,3 +1102,245 @@ noscript {
     padding: 1.25rem;
   }
 }
+
+/* ===========================
+   Account Management Styles
+   =========================== */
+
+/* Account Management Container */
+.account-management-container {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.account-management-container h1 {
+  text-align: center;
+  color: rgb(27, 202, 202);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.account-management-container h2 {
+  color: rgb(27, 202, 202);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.account-management-container h3 {
+  color: rgb(27, 202, 202);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Welcome Section Styles */
+.welcome-section {
+  background-color: white;
+  border: 4px solid rgb(27, 202, 202);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.welcome-section a {
+  display: inline-block;
+  background-color: rgb(27, 202, 202);
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+
+.welcome-section a:hover {
+  background-color: rgb(20, 160, 160);
+}
+
+/* Account Update Page - Dual Form Layout */
+.account-forms-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.account-forms-wrapper h1 {
+  text-align: center;
+  color: rgb(27, 202, 202);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  grid-column: 1 / -1;
+}
+
+.account-forms-wrapper .form {
+  background-color: white;
+  border: 4px solid rgb(27, 202, 202);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.account-forms-wrapper fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.account-forms-wrapper legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(27, 202, 202);
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.account-forms-wrapper label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.account-forms-wrapper label:first-of-type {
+  margin-top: 0;
+}
+
+.account-forms-wrapper input[type="text"],
+.account-forms-wrapper input[type="email"],
+.account-forms-wrapper input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.account-forms-wrapper input[type="text"]:focus,
+.account-forms-wrapper input[type="email"]:focus,
+.account-forms-wrapper input[type="password"]:focus {
+  outline: none;
+  border-color: rgb(27, 202, 202);
+}
+
+.account-forms-wrapper input[required] {
+  border-left: 4px solid rgb(27, 202, 202);
+}
+
+.account-forms-wrapper input[type="submit"] {
+  width: 100%;
+  background-color: rgb(27, 202, 202);
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+.account-forms-wrapper input[type="submit"]:hover {
+  background-color: rgb(20, 160, 160);
+}
+
+.account-forms-wrapper hr {
+  border: none;
+  border-top: 3px solid rgb(27, 202, 202);
+  margin: 2rem 0;
+  opacity: 0.3;
+}
+
+.account-forms-wrapper p {
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 500px) {
+  .account-management-container {
+    padding: 1rem;
+  }
+  
+  .account-management-container h1 {
+    font-size: 1.75rem;
+  }
+  
+  .welcome-section {
+    padding: 1.5rem;
+  }
+  
+  .account-forms-wrapper {
+    padding: 1rem;
+  }
+  
+  .account-forms-wrapper .form {
+    padding: 1.5rem;
+  }
+  
+  .account-forms-wrapper legend {
+    font-size: 1.3rem;
+  }
+}
+
+/* Tablet adjustments */
+@media screen and (min-width: 768px) {
+  .account-forms-wrapper {
+    gap: 2.5rem;
+  }
+}
+
+/* Wide screen adjustments */
+@media screen and (min-width: 1200px) {
+  .account-management-container {
+    min-height: calc(100vh - 300px);
+  }
+  
+  .account-management-container h1 {
+    font-size: 2.5rem;
+  }
+  
+  .welcome-section {
+    max-width: 700px;
+    padding: 3rem;
+  }
+  
+  .account-forms-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 2rem 5rem;
+  }
+  
+  .account-forms-wrapper h1 {
+    font-size: 2.5rem;
+    grid-column: 1 / -1;
+  }
+  
+  .account-forms-wrapper hr {
+    display: none; /* Hide HR on wide screens since forms are side-by-side */
+  }
+  
+  .account-forms-wrapper .form {
+    padding: 2.5rem;
+  }
+  
+  .account-forms-wrapper legend {
+    font-size: 1.75rem;
+  }
+}

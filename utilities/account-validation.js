@@ -116,4 +116,61 @@ validate.checkLoginData = async (req, res, next) => {
   next()
 }
 
+validate.updateRules = () => [
+  body("account_firstname").trim().notEmpty().withMessage("First name is required."),
+  body("account_lastname").trim().notEmpty().withMessage("Last name is required."),
+  body("account_email")
+    .trim().escape()
+    .isEmail()
+    .normalizeEmail()
+    .withMessage("A valid email is required.")
+    .custom(async (email, { req }) => {
+      const account_id = Number(req.body.account_id)
+      const existing = await accountModel.getAccountByEmail(email)
+      if (!existing) return true
+      if (Number(existing.account_id) === account_id) return true
+      throw new Error("Email already exists. Please use a different email.")
+    }),
+]
+
+validate.checkUpdateData = async (req, res, next) => {
+  const errors = validationResult(req)
+  if (errors.isEmpty()) return next()
+
+  const nav = await utilities.getNav()
+  const account = await accountModel.getAccountById(req.body.account_id)
+
+  return res.render("account/update", {
+    title: "Update Account",
+    nav,
+    errors,
+    account,
+    locals: req.body,
+  })
+}
+
+validate.passwordRules = () => [
+  body("account_password")
+    .trim()
+    .isStrongPassword({ minLength: 12, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1 })
+    .withMessage("Password does not meet requirements."),
+]
+
+validate.checkPasswordData = async (req, res, next) => {
+  const errors = validationResult(req)
+  if (errors.isEmpty()) return next()
+
+  req.flash("notice", "Password update failed. Please fix the password requirements.")
+  const nav = await utilities.getNav()
+  const account = await accountModel.getAccountById(req.body.account_id)
+
+  return res.render("account/update", {
+    title: "Update Account",
+    nav,
+    errors,
+    account,
+    locals: {}, // never sticky password
+  })
+}
+
 module.exports = validate

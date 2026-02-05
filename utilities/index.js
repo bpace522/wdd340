@@ -86,35 +86,64 @@ Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)
 * Middleware to check token validity
 **************************************** */
 Util.checkJWTToken = (req, res, next) => {
- if (req.cookies.jwt) {
-  jwt.verify(
-   req.cookies.jwt,
-   process.env.ACCESS_TOKEN_SECRET,
-   function (err, accountData) {
+  // default locals for every request
+  res.locals.loggedin = 0
+  res.locals.accountData = null
+
+  const token = req.cookies.jwt
+  if (!token) return next()
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, accountData) => {
     if (err) {
-     req.flash("notice", "Please log in")
-     res.clearCookie("jwt")
-     return res.redirect("/account/login")
+      // Token bad/expired -> clear it, treat user as logged out, keep browsing
+      res.clearCookie("jwt")
+      return next()
     }
+
     res.locals.accountData = accountData
     res.locals.loggedin = 1
-    next()
-   })
- } else {
-  next()
- }
+    return next()
+  })
 }
+
 
 /* ****************************************
  *  Check Login
  * ************************************ */
- Util.checkLogin = (req, res, next) => {
-  if (res.locals.loggedin) {
-    next()
-  } else {
+Util.checkLogin = async (req, res, next) => {
+  if (res.locals.loggedin) return next()
+
+  req.flash("notice", "Please log in.")
+  const nav = await Util.getNav()
+  return res.status(401).render("account/login", {
+    title: "Login",
+    nav,
+    errors: null,
+  })
+}
+
+Util.checkAccountType = async (req, res, next) => {
+  if (!res.locals.loggedin) {
     req.flash("notice", "Please log in.")
-    return res.redirect("/account/login")
+    const nav = await Util.getNav()
+    return res.status(401).render("account/login", {
+      title: "Login",
+      nav,
+      errors: null,
+    })
   }
- }
+
+  const type = res.locals.accountData.account_type
+  if (type === "Employee" || type === "Admin") return next()
+
+  req.flash("notice", "You do not have permission to access that page.")
+  const nav = await Util.getNav()
+  return res.status(403).render("account/login", {
+    title: "Login",
+    nav,
+    errors: null,
+  })
+}
+
 
 module.exports = Util
