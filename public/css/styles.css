@@ -219,6 +219,33 @@ footer {
   background-color: #ddd;
 }
 
+/* Favorites button on vehicle detail page */
+.vehicle-info form {
+  margin-top: 1.25rem;      /* space above the favorites button */
+  margin-bottom: 1.25rem;   /* space below so it doesn't sit on top of actions */
+}
+
+.vehicle-info form button {
+  background-color: rgb(27, 202, 202);
+  border: none;
+  padding: 0.65rem 1rem;    /* a bit smaller */
+  font-size: 0.95rem;       /* smaller text */
+  font-weight: normal;      /* not bold */
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.vehicle-info form button:hover {
+  background-color: rgb(20, 160, 160);
+}
+.vehicle-info form button {
+  opacity: 0.95;
+}
+.vehicle-info form button:hover {
+  opacity: 1;
+}
+
+
 /* =======================
    Error Page Styles
    ======================= */

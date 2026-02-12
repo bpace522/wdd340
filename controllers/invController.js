@@ -1,5 +1,7 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
+const favoriteModel = require("../models/favorite-model")
+
 
 const invCont = {}
 
@@ -22,14 +24,23 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildByModelId = async function (req, res, next) {
   const inventory_id = req.params.inventoryId
   const vehicle = await invModel.getModelInfoByInventoryId(inventory_id)
-  let nav = await utilities.getNav()
+  const nav = await utilities.getNav()
+
+  let isFavorite = false
+
+  if (res.locals.loggedin && res.locals.accountData) {
+    const account_id = res.locals.accountData.account_id
+    isFavorite = await favoriteModel.checkFavorite(account_id, vehicle.inv_id)
+  }
 
   res.render("./inventory/model", {
     title: `${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}`,
     nav,
     vehicle,
+    isFavorite,
   })
 }
+
 
 invCont.buildManagement = async function(req, res, next) {
   try {

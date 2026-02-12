@@ -19,6 +19,7 @@ const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const favoriteRoute = require("./routes/favoriteRoute")
 
 
 /* ***********************
@@ -64,6 +65,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 //Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Favorite Route
+app.use("/favorites", favoriteRoute)
 
 // Test route
 app.use("/test", testRoute)
